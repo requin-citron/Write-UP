@@ -31,7 +31,7 @@ On commence par lancer le code dans gdb avec une chaine cyclic on réussie facil
 
 ![](images/gdb1.png)
 
-maintenant essayons de jump juste avant le puts sur le lea eax,[ebx -0x1ff8] qui l'argument du puts.
+maintenant essayons de jump juste avant le puts sur le lea eax,[ebx -0x1ff8] qui est l'argument du puts.
 
 ![](images/gdb2.png)
 
