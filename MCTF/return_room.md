@@ -35,8 +35,10 @@ maintenant essayons de jump juste avant le puts sur le lea eax,[ebx -0x1ff8] qui
 
 ![](images/gdb2.png)
 
-Il ne reste plus qu'à faire pointer ebx-0x1ff8 sur la chain qui contient le flag.LA chaine qui contient le flag ce trouve
-en 0x0804a008 donc il faut que ebx soit égale a 0x804c000.
+Il ne reste plus qu'à faire pointer ebx-0x1ff8 sur la chain qui contient le flag.Nous controlon ebx avec notre bufferoverflow
+donc le travaille est deja casiment fais il suffit de trouver la chaine qui contient le flag.
+La chaine trouve en 0x0804a008.
+Il faut que ebx soit égale a 0x804c000 (0x0804a008+0x1ff8).
 une fois fini on assemble ca payload 
  
     python3 -c "from pwn import *;import sys; sys.stdout.buffer.write(b'aaaabaaacaaadaaaea'+p32(0x0804a008 + 0x1ff8)+b'aaga'+p32(0x080491d8))"
