@@ -11,10 +11,12 @@ pour faire une mini ROPchain, mais j'ai utilisé une astuce pour simplifier l'ex
 
 on n'observe uniquement 1 input qui contient un bufferoverflow. Maintenant au travaille
 maintenant jetons un coup d'oeil avec ghidra.
+
 ![](images/ghidra1.png)
 
 5 fonctions nous sautent aux yeux, vuln qui est notre fonction qui fait un scanf
 puis setkey1, setkey2, setkey3 puis secret_room qui fait quelque check avant d'afficher le flag.
+
 ![](images/secret_room.png)
 
 on voit que le but du chall est de réussir à appeler la fonction secret_room avec les bonnes valeur pours reussir
@@ -26,9 +28,11 @@ dans le puts pour afficher notre flag.
 **exploitation**
 
 On commence par lancer le code dans gdb avec une chaine cyclic on réussie facilement a trouver l'offset pour écrire sur l'eip (pointeur d'instruction)
+
 ![](images/gdb1.png)
 
 maintenant essayons de jump juste avant le puts sur le lea eax,[ebx -0x1ff8] qui l'argument du puts.
+
 ![](images/gdb2.png)
 
 Il ne reste plus qu'à faire pointer ebx-0x1ff8 sur la chain qui contient le flag.LA chaine qui contient le flag ce trouve
