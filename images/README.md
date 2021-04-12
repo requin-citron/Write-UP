@@ -1,1 +1,0 @@
-**_Image directory_**
